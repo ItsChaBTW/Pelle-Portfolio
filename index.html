@@ -275,50 +275,219 @@
         }
 
         .portfolio-section {
-            padding: 100px 0;
+            padding: 80px 0;
             background: #ffffff;
             position: relative;
         }
 
+        .portfolio-container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
         .portfolio-card {
             position: relative;
-            border-radius: 20px;
+            background: #ffffff;
+            border-radius: 16px;
             overflow: hidden;
-            margin-bottom: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
             transition: all 0.3s ease;
+            border: 1px solid #f0f0f0;
         }
 
         .portfolio-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .portfolio-image-container {
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+            background: #f8f9fa;
         }
 
         .portfolio-card img {
             width: 100%;
-            height: 300px;
+            height: 100%;
             object-fit: cover;
-            transition: transform 0.5s ease;
+            transition: all 0.3s ease;
         }
 
         .portfolio-card:hover img {
-            transform: scale(1.1);
+            transform: scale(1.05);
         }
 
-        .portfolio-overlay {
+        .portfolio-image-overlay {
             position: absolute;
-            bottom: 0;
+            top: 0;
             left: 0;
             right: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
-            padding: 2rem;
-            color: #ffffff;
-            transform: translateY(100%);
-            transition: transform 0.3s ease;
+            bottom: 0;
+            background: rgba(255, 215, 0, 0.1);
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
-        .portfolio-card:hover .portfolio-overlay {
+        .portfolio-card:hover .portfolio-image-overlay {
+            opacity: 1;
+        }
+
+        .portfolio-content {
+            padding: 1.25rem;
+            position: relative;
+        }
+
+        .portfolio-category {
+            display: inline-block;
+            background: var(--primary-color);
+            color: #ffffff;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+            margin-bottom: 0.75rem;
+        }
+
+        .portfolio-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-color);
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+
+        .portfolio-description {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .portfolio-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 0.75rem;
+            border-top: 1px solid #f0f0f0;
+        }
+
+        .portfolio-tech {
+            display: flex;
+            gap: 0.25rem;
+            flex-wrap: wrap;
+        }
+
+        .tech-tag {
+            background: #f8f9fa;
+            color: #666;
+            padding: 0.2rem 0.6rem;
+            border-radius: 8px;
+            font-size: 0.7rem;
+            font-weight: 500;
+        }
+
+        .portfolio-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.5rem 1rem;
+            background: var(--primary-color);
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 20px;
+            font-weight: 500;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .portfolio-link:hover {
+            transform: translateY(-1px);
+            background: #E6C200;
+            color: #ffffff;
+        }
+
+        .portfolio-stats {
+            position: absolute;
+            top: 0.75rem;
+            right: 0.75rem;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 0.3rem 0.6rem;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--text-color);
+            opacity: 0;
+            transform: translateY(-5px);
+            transition: all 0.3s ease;
+        }
+
+        .portfolio-card:hover .portfolio-stats {
+            opacity: 1;
             transform: translateY(0);
+        }
+
+        /* Featured card styling - simplified */
+        .portfolio-card.featured {
+            grid-column: span 2;
+        }
+
+        .portfolio-card.featured .portfolio-image-container {
+            height: 220px;
+        }
+
+        .portfolio-card.featured .portfolio-title {
+            font-size: 1.3rem;
+        }
+
+        .portfolio-card.featured .portfolio-description {
+            -webkit-line-clamp: 3;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 1200px) {
+            .portfolio-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 1.25rem;
+            }
+            
+            .portfolio-card.featured {
+                grid-column: span 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .portfolio-card.featured .portfolio-image-container {
+                height: 200px;
+            }
+            
+            .portfolio-footer {
+                flex-direction: column;
+                gap: 0.75rem;
+                align-items: flex-start;
+            }
+            
+            .portfolio-content {
+                padding: 1rem;
+            }
         }
 
         .contact-section {
@@ -1033,36 +1202,148 @@
 
     <!-- Portfolio Section -->
     <section id="portfolio" class="portfolio-section">
-        <div class="container">
+        <div class="container portfolio-container">
             <h2 class="section-title">My Work</h2>
-            <div class="row">
-                <div class="col-md-6 col-lg-4">
-                    <div class="portfolio-card">
+            <div class="portfolio-grid">
+                <!-- Featured Project -->
+                <div class="portfolio-card featured">
+                    <div class="portfolio-image-container">
+                        <img src="thynk-preview.png" alt="THYNK Disaster Response Network">
+                        <div class="portfolio-image-overlay"></div>
+                        <div class="portfolio-stats">
+                            <i class="fas fa-eye me-1"></i> Live
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <span class="portfolio-category">Emergency Platform</span>
+                        <h4 class="portfolio-title">THYNK Disaster Response Network</h4>
+                        <p class="portfolio-description">
+                            Emergency management platform for rapid disaster response coordination and resource management.
+                        </p>
+                        <div class="portfolio-footer">
+                            <div class="portfolio-tech">
+                                <span class="tech-tag">C# ASP.NET</span>
+                                <span class="tech-tag">SQL Server</span>
+                                <span class="tech-tag">Tailwind CSS</span>
+                                <span class="tech-tag">Entity Framework Core</span>
+                            </div>
+                            <a href="https://svchadpelle-001-site1.ptempurl.com/" target="_blank" class="portfolio-link">
+                                <i class="fas fa-external-link-alt"></i>
+                                View Live
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Regular Projects -->
+                <div class="portfolio-card">
+                    <div class="portfolio-image-container">
+                        <img src="bcctap-preview.png" alt="BCCTAP Project">
+                        <div class="portfolio-image-overlay"></div>
+                        <div class="portfolio-stats">
+                            <i class="fas fa-eye me-1"></i> Live
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <span class="portfolio-category">Education Tech</span>
+                        <h4 class="portfolio-title">BCC Time Attendance Platform</h4>
+                        <p class="portfolio-description">
+                            QR code-based attendance system with real-time tracking for Bago City College.
+                        </p>
+                        <div class="portfolio-footer">
+                            <div class="portfolio-tech">
+                                <span class="tech-tag">PHP</span>
+                                <span class="tech-tag">MySQL</span>
+                                <span class="tech-tag">QR</span>
+                            </div>
+                            <a href="https://bcctap.bccbsis.com/" target="_blank" class="portfolio-link">
+                                <i class="fas fa-external-link-alt"></i>
+                                View Live
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-card">
+                    <div class="portfolio-image-container">
                         <img src="lydo.png" alt="LYDO Project">
-                        <div class="portfolio-overlay">
-                            <h4>Local Youth Development Office</h4>
-                            <p>PHP, MySQL, Bootstrap</p>
-                            <a href="https://lydo.bccbsis.com" class="btn btn-light">View Project</a>
+                        <div class="portfolio-image-overlay"></div>
+                        <div class="portfolio-stats">
+                            <i class="fas fa-eye me-1"></i> Live
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <span class="portfolio-category">Government</span>
+                        <h4 class="portfolio-title">Local Youth Development Office</h4>
+                        <p class="portfolio-description">
+                            Youth program management system for tracking programs and community initiatives.
+                        </p>
+                        <div class="portfolio-footer">
+                            <div class="portfolio-tech">
+                                <span class="tech-tag">PHP</span>
+                                <span class="tech-tag">MySQL</span>
+                                <span class="tech-tag">Bootstrap</span>
+                            </div>
+                            <a href="https://lydo.bccbsis.com" target="_blank" class="portfolio-link">
+                                <i class="fas fa-external-link-alt"></i>
+                                View Live
+                            </a>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="portfolio-card">
+
+                <div class="portfolio-card">
+                    <div class="portfolio-image-container">
                         <img src="qr.png" alt="QR Code Project">
-                        <div class="portfolio-overlay">
-                            <h4>Mobile Device Monitoring App</h4>
-                            <p>PHP, MySQL, Bootstrap</p>
-                            <a href="#" class="btn btn-light">View Project</a>
+                        <div class="portfolio-image-overlay"></div>
+                        <div class="portfolio-stats">
+                            <i class="fas fa-cog me-1"></i> Internal
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <span class="portfolio-category">System Tool</span>
+                        <h4 class="portfolio-title">Mobile Device Monitoring</h4>
+                        <p class="portfolio-description">
+                            Device monitoring system with real-time status tracking and security features.
+                        </p>
+                        <div class="portfolio-footer">
+                            <div class="portfolio-tech">
+                                <span class="tech-tag">PHP</span>
+                                <span class="tech-tag">MySQL</span>
+                                <span class="tech-tag">Bootstrap</span>
+                            </div>
+                            <a href="#" class="portfolio-link">
+                                <i class="fas fa-lock"></i>
+                                Private
+                            </a>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="portfolio-card">
+
+                <div class="portfolio-card">
+                    <div class="portfolio-image-container">
                         <img src="ramon.png" alt="RTNHS Project">
-                        <div class="portfolio-overlay">
-                            <h4>RTNHS Faculty Digital Management</h4>
-                            <p>PHP, MySQL, Bootstrap</p>
-                            <a href="#" class="btn btn-light">View Project</a>
+                        <div class="portfolio-image-overlay"></div>
+                        <div class="portfolio-stats">
+                            <i class="fas fa-cog me-1"></i> Internal
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <span class="portfolio-category">Education</span>
+                        <h4 class="portfolio-title">RTNHS Faculty Management</h4>
+                        <p class="portfolio-description">
+                            Digital management system for faculty with document management and scheduling tools.
+                        </p>
+                        <div class="portfolio-footer">
+                            <div class="portfolio-tech">
+                                <span class="tech-tag">PHP</span>
+                                <span class="tech-tag">MySQL</span>
+                                <span class="tech-tag">Bootstrap</span>
+                            </div>
+                            <a href="#" class="portfolio-link">
+                                <i class="fas fa-lock"></i>
+                                Private
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -1429,18 +1710,7 @@
         }
         */
 
-        // Enhanced portfolio hover effects
-        document.querySelectorAll('.portfolio-card').forEach(card => {
-            card.addEventListener('mouseenter', () => {
-                card.querySelector('.portfolio-overlay').style.transform = 'translateY(0)';
-                card.querySelector('img').style.transform = 'scale(1.1)';
-            });
-            
-            card.addEventListener('mouseleave', () => {
-                card.querySelector('.portfolio-overlay').style.transform = 'translateY(100%)';
-                card.querySelector('img').style.transform = 'scale(1)';
-            });
-        });
+        // Portfolio hover effects are now handled by CSS
 
         // Skill Modal Progress Bar Animation
         const modals = document.querySelectorAll('.skill-modal');
