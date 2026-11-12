@@ -1,30 +1,27 @@
 export type QA = { q: string; a: string }
 
 /**
- * The questions people ask before they email. One list, used by the FAQ
- * accordion on the Contact view (and the legacy long-scroll FAQ section).
- * Five questions, two or three sentences each: the accordion sits in a
- * fixed panel and more than that pushes the email row off the plate.
+ * The questions people ask before they email Charlie Pelle.
  */
 export const FAQS: QA[] = [
   {
-    q: 'What do you do?',
-    a: 'PLACEHOLDER - tell me what to put here: the kinds of work you take on, and who it is usually for.',
+    q: 'What kinds of projects do you take on?',
+    a: 'I specialize in fullstack web applications, backend APIs, and custom database designs. Whether you need a Laravel/PHP platform, an ASP.NET system, a responsive frontend, or database optimization, I build robust, production-ready solutions.',
   },
   {
-    q: 'How fast can you start?',
-    a: 'PLACEHOLDER - tell me what to put here: your usual lead time for small fixes vs. larger projects, and your working hours.',
+    q: 'How fast can you start on a new project?',
+    a: 'For smaller integrations or audits, I can usually begin within 1 to 2 business days. For larger end-to-end web apps, we can kick off with a brief planning phase to establish requirements and deliverables right away.',
   },
   {
-    q: 'How much do you charge?',
-    a: 'PLACEHOLDER - tell me what to put here: how you price (hourly, per project, retainer) and how a quote is put together.',
+    q: 'How do you structure pricing and engagements?',
+    a: 'I offer flexible project-based quotes as well as milestone-based rates for ongoing development. Every quote includes transparent milestones, clear deliverables, and post-launch support.',
   },
   {
-    q: 'Where are you based?',
-    a: 'PLACEHOLDER - tell me what to put here: your location or timezone, and which client timezones you overlap with.',
+    q: 'Where are you based, and what hours do you work?',
+    a: 'I am based in Bago City, Philippines (GMT+8). I regularly collaborate with remote teams and clients across various time zones with dedicated overlap for daily check-ins and reviews.',
   },
   {
-    q: 'What happens after I write?',
-    a: 'PLACEHOLDER - tell me what to put here: how fast you reply and what the next step looks like.',
+    q: 'What happens after I get in touch?',
+    a: 'I reply within 24 hours. We will discuss your goals, system architecture requirements, timeline, and immediately draft a clear roadmap to bring your project to life.',
   },
 ]

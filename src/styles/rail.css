@@ -49,14 +49,11 @@
     display: block;
     width: 100%;
     height: 100%;
-    object-fit: contain;
-    object-position: center bottom;
-    filter: drop-shadow(0 14px 22px rgba(6, 12, 26, 0.35));
-    /* The cutout ends in a flat line across the tee. One ellipse anchored
-       high dissolves the bottom edge and both shoulders into the page while
-       the head stays fully opaque - the same fade About uses. */
-    -webkit-mask-image: radial-gradient(ellipse 80% 86% at 50% 24%, #000 50%, transparent 100%);
-    mask-image: radial-gradient(ellipse 80% 86% at 50% 24%, #000 50%, transparent 100%);
+    object-fit: cover;
+    object-position: center top;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 122, 26, 0.3);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2);
   }
 
   .rail__name {

@@ -1,33 +1,19 @@
 import type { CSSProperties } from 'react'
-import { ArrowUpRight, MapPin } from '@/components/slab'
+import { ArrowUpRight, MapPin, GraduationCap } from '@/components/slab'
 import { profile } from '@/data/profile'
 
 /**
- * AboutGrid - the About view as a fixed viewport.
- *
- * One glass sheet, two columns: who you are on the left, the illustration
- * on the right. Sized to the panel, so nothing here scrolls.
- *
- * The left column is a ladder, not a paragraph block: one display statement,
- * one line of context, then the four things you do - each carrying the marks
- * of the tools it is built with. The tools are the proof, so they are the
- * visual. Swap the marks below for your own (any square SVG/PNG in public/).
+ * AboutGrid - Charlie Pelle's About view.
  */
 
-const N8N = { src: '/icons/ai/n8n.svg', name: 'n8n' }
-const ZAPIER = { src: '/icons/ai/zapier.svg', name: 'Zapier' }
 const DOCKER = { src: '/icons/ai/docker.svg', name: 'Docker' }
-const CLAUDE = { src: '/icons/ai/claude-color.svg', name: 'Claude' }
-const CODEX = { src: '/icons/ai/codex.svg', name: 'Codex' }
-const GLM = { src: '/icons/ai/zhipu.svg', name: 'GLM' }
-const QWEN = { src: '/icons/ai/qwen.svg', name: 'Qwen' }
-const HERMES = { src: '/icons/ai/hermes.svg', name: 'Hermes' }
-const NAMECHEAP = { src: '/icons/ai/namecheap.svg', name: 'Namecheap' }
-const CLOUDFLARE = { src: '/icons/ai/cloudflare.svg', name: 'Cloudflare' }
+const NODE = { src: '/icons/ai/nodedotjs.svg', name: 'Node.js' }
+const POSTGRES = { src: '/icons/ai/postgresql.svg', name: 'PostgreSQL' }
+const SQLITE = { src: '/icons/ai/sqlite.svg', name: 'MySQL / SQL Server' }
+const TAILWIND = { src: '/icons/ai/tailwindcss.svg', name: 'Tailwind CSS' }
+const REACT = { src: '/icons/ai/react.svg', name: 'React' }
 const GITHUB = { src: '/icons/ai/github.svg', name: 'GitHub' }
-const GWS = { src: '/icons/googleworkspace.svg', name: 'Google Workspace' }
-const SLACK = { src: '/icons/ai/slack-color.svg', name: 'Slack' }
-const FIREFLIES = { src: '/icons/ai/fireflies.png', name: 'Fireflies' }
+const CLOUDFLARE = { src: '/icons/ai/cloudflare.svg', name: 'Cloudflare' }
 
 type Capability = {
   index: string
@@ -38,23 +24,23 @@ type Capability = {
 const CAPABILITIES: Capability[] = [
   {
     index: '01',
-    title: 'Your role 1',
-    marks: [N8N, ZAPIER, DOCKER],
+    title: 'Backend & System APIs (PHP, Laravel, Node.js, C# ASP.NET)',
+    marks: [NODE, GITHUB],
   },
   {
     index: '02',
-    title: 'Your role 2',
-    marks: [CLAUDE, CODEX, GLM, QWEN, HERMES],
+    title: 'Database Architecture & Query Optimization (MySQL, SQL Server)',
+    marks: [POSTGRES, SQLITE],
   },
   {
     index: '03',
-    title: 'Your role 3',
-    marks: [CLAUDE, CODEX, NAMECHEAP, CLOUDFLARE, GITHUB],
+    title: 'Modern Frontends & UI Systems (Tailwind CSS, React, JS)',
+    marks: [REACT, TAILWIND],
   },
   {
     index: '04',
-    title: 'Your role 4',
-    marks: [GWS, SLACK, FIREFLIES],
+    title: 'Infrastructure, Version Control & Security (Docker, Git, Cloudflare)',
+    marks: [DOCKER, CLOUDFLARE, GITHUB],
   },
 ]
 
@@ -62,29 +48,28 @@ export default function AboutGrid() {
   return (
     <section className="pgrid agrid" aria-labelledby="about-title">
       <header className="pgrid__head">
-        <span className="pgrid__eyebrow">About</span>
+        <span className="pgrid__eyebrow">About Me</span>
         <h1 className="pgrid__title" id="about-title">
           {`Hi, I’m ${profile.firstName}.`}
         </h1>
         <p className="pgrid__lede">
-          PLACEHOLDER - tell me what to put here: one line on what you do.
+          Fullstack Developer specializing in robust server-side architectures, database optimization, and high-performance web systems.
         </p>
       </header>
 
       <div className="home__glass agrid__glass">
         <div className="agrid__copy">
           <p className="agrid__lead">
-            Your big statement goes here, in one or two lines.
-            <span> A softer second half that finishes the thought.</span>
+            Crafting efficient, reliable digital solutions from database schema to user interface.
+            <span> Driven by clean code, sound engineering, and real-world impact.</span>
           </p>
 
           <p className="agrid__note">
-            <strong>Your company name</strong>, and{' '}
-            <a className="agrid__link" href="#">
-              your product
-            </a>{' '}
-            - PLACEHOLDER - tell me what to put here: two sentences on your company, what
-            you sell or build, and who it is for.
+            <strong>Bago City College BSIS Graduate</strong>, currently serving as{' '}
+            <span className="agrid__link" style={{ fontWeight: 600 }}>
+              IT Officer at Bago City Government
+            </span>{' '}
+            — engineer behind the <em>Bagotizen Card Pre-Enrollment</em>, <em>City of Bago Iskolar Portal</em>, and <em>BYEA 2026 Tabulation System</em>. Awarded Developer of the Year and consistent Programmer of the Month.
           </p>
 
           <ul className="agrid__caps" role="list">
@@ -112,12 +97,12 @@ export default function AboutGrid() {
           {/* One plate, two cells sharing a mark / title / meta anatomy. */}
           <div className="agrid__bar">
             <span className="agrid__cell">
-              <span className="agrid__cell-mark agrid__cell-mark--img">
-                <img src="/placeholders/badge.svg" alt="" loading="lazy" decoding="async" />
+              <span className="agrid__cell-mark agrid__cell-mark--plain">
+                <GraduationCap size={18} weight="fill" aria-hidden="true" />
               </span>
               <span className="agrid__cell-copy">
-                <span className="agrid__cell-title">Credential name</span>
-                <span className="agrid__cell-meta">Credential ID</span>
+                <span className="agrid__cell-title">BS Information Systems</span>
+                <span className="agrid__cell-meta">Bago City College (2021-2025)</span>
               </span>
             </span>
 
@@ -127,17 +112,17 @@ export default function AboutGrid() {
               </span>
               <span className="agrid__cell-copy">
                 <span className="agrid__cell-title">{profile.location}</span>
-                <span className="agrid__cell-meta">Timezone · working hours</span>
+                <span className="agrid__cell-meta">GMT+8 · Remote Available</span>
               </span>
             </span>
 
-            <a className="agrid__cell agrid__cell--wide" href="#">
-              <span className="agrid__cell-mark agrid__cell-mark--plain">
-                <img src="/placeholders/logo.svg" alt="" loading="lazy" decoding="async" />
+            <a className="agrid__cell agrid__cell--wide" href="https://github.com/ItsChaBTW" target="_blank" rel="noopener noreferrer">
+              <span className="agrid__cell-mark agrid__cell-mark--img">
+                <img src="/icons/ai/github.svg" alt="GitHub" loading="lazy" decoding="async" />
               </span>
               <span className="agrid__cell-copy">
-                <span className="agrid__cell-title">Community or affiliation</span>
-                <span className="agrid__cell-meta">Your role there</span>
+                <span className="agrid__cell-title">GitHub Portfolio</span>
+                <span className="agrid__cell-meta">@ItsChaBTW · Open Source & Projects</span>
               </span>
               <ArrowUpRight className="agrid__cell-go" size={15} weight="bold" aria-hidden="true" />
             </a>
@@ -146,12 +131,13 @@ export default function AboutGrid() {
 
         <div className="agrid__portrait">
           <img
-            src="/avatar.svg"
-            alt="Portrait placeholder"
+            src="/images/profile/pic2.jpg"
+            alt="Charlie Pelle"
             loading="eager"
             decoding="async"
             width={400}
             height={400}
+            style={{ objectFit: 'cover', borderRadius: '1.25rem' }}
           />
         </div>
       </div>

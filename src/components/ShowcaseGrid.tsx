@@ -13,28 +13,26 @@ export default function ShowcaseGrid() {
     <section className="pgrid ktools" aria-labelledby="showcase-title">
       <header className="pgrid__head ktools__head">
         <div className="ktools__head-copy">
-          <span className="pgrid__eyebrow">Showcase</span>
+          <span className="pgrid__eyebrow">Municipal Flagship</span>
           <h1 className="pgrid__title" id="showcase-title">
-            Your flagship product, and the people using it.
+            Bagotizen Card Pre-Enrollment Platform
           </h1>
           <p className="pgrid__lede">
-            PLACEHOLDER - tell me what to put here: one line on what this product is and why a visitor should look at it.
+            Fast, verified, and secure digital pre-enrollment for 850+ Iskolar Bago beneficiaries in City of Bago. Features duplicate checking, automated QR reference codes (BAGO-2026-XXXXX), and GCash validation for rapid payout card issuance.
           </p>
         </div>
 
-        {/* Badge slot. Fixed 320x72 box so it sits on the baseline of the
-            lede. Swap the image and text for a real badge, award or launch
-            listing, and point the link at it. */}
+        {/* Badge slot */}
         <div className="ktools__vote">
           <p className="ktools__vote-label">
-            Featured on
+            City of Bago
             <span aria-hidden="true" className="ktools__vote-dot" />
-            <span className="ktools__vote-ask">Placeholder</span>
+            <span className="ktools__vote-ask">Live Deployment</span>
           </p>
-          <a className="ktools__vote-frame ktools__vote-card" href="#">
-            <img src="/placeholders/badge.svg" alt="" width="48" height="48" />
+          <a className="ktools__vote-frame ktools__vote-card" href="https://lydo.bccbsis.com/qwerty12345/" target="_blank" rel="noopener noreferrer">
+            <img src="/images/projects/bagotizen-card.jpg" alt="" width="42" height="42" style={{ borderRadius: '8px', objectFit: 'cover' }} />
             <span className="ktools__vote-text">
-              PLACEHOLDER - a badge, award or launch link
+              Open Bagotizen Live Portal
             </span>
           </a>
         </div>

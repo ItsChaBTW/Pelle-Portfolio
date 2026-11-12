@@ -1,15 +1,3 @@
-/**
- * YOUR IDENTITY - start here.
- *
- * Everything that says who you are lives in this file: name, handle, photo,
- * socials, email and the Home headline. Every value below is a PLACEHOLDER.
- * Replace the text, or hand this file to your AI assistant and tell it what
- * to put in each field.
- *
- * Page-specific copy (projects, services, testimonials, FAQs) lives in the
- * other files in src/data/ and at the top of each view component.
- */
-
 import { Briefcase, SealCheck, Clock, type Icon } from '@/components/slab'
 
 export type SocialLink = {
@@ -46,31 +34,28 @@ export type Profile = {
 }
 
 export const profile: Profile = {
-  name: 'Your Name',
-  firstName: 'Your Name',
-  handle: '@yourhandle',
-  role: 'PLACEHOLDER - your title',
-  avatarSrc: '/avatar.svg',
-  verifiedLabel: 'PLACEHOLDER - what the tick means (e.g. a certification)',
-  email: 'you@example.com',
-  location: 'PLACEHOLDER - your city or timezone',
-  // Pick any icon from https://phosphoricons.com and import it above.
+  name: 'Charlie Pelle',
+  firstName: 'Charlie',
+  handle: '@ItsChaBTW',
+  role: 'Fullstack Developer',
+  avatarSrc: '/images/profile/pic2.jpg',
+  verifiedLabel: 'BS in Information Systems • Fullstack Developer',
+  email: 'charlied.pelle@gmail.com',
+  location: 'Bago City, Philippines (GMT+8)',
   stats: [
-    { value: '0 yrs', label: 'PLACEHOLDER', Icon: Briefcase },
-    { value: '#000', label: 'PLACEHOLDER', Icon: SealCheck },
-    { value: 'GMT+0', label: 'PLACEHOLDER', Icon: Clock },
+    { value: '2+ yrs', label: 'Development', Icon: Briefcase },
+    { value: '5+', label: 'Live Deployments', Icon: SealCheck },
+    { value: 'GMT+8', label: 'Philippines', Icon: Clock },
   ],
-  // The intro types this line, then flies it into the Home headline.
-  // Keep it short: two halves, 5-8 words total.
-  displayName: { line1: 'Your headline here.', line2: 'Keep it short.' },
+  displayName: { line1: 'Fullstack solutions.', line2: 'Scalable & robust.' },
   hero: {
-    body: 'PLACEHOLDER - one line on what you do and who you do it for.',
-    portraitSrc: '/avatar.svg',
-    portraitAlt: 'Portrait placeholder',
+    body: 'Passionate Fullstack Developer specializing in PHP, Laravel, Node.js, and C# ASP.NET, crafting efficient web systems and robust APIs.',
+    portraitSrc: '/images/profile/pic2.jpg',
+    portraitAlt: 'Charlie Pelle - Fullstack Developer',
   },
   socials: [
-    { label: 'Facebook profile', href: '#', iconPath: '/icons/facebook.svg' },
-    { label: 'LinkedIn profile', href: '#', iconPath: '/icons/linkedin.svg' },
-    { label: 'Discord profile', href: '#', iconPath: '/icons/discord.svg' },
+    { label: 'GitHub profile', href: 'https://github.com/ItsChaBTW', iconPath: '/icons/ai/github.svg' },
+    { label: 'Email Charlie', href: 'mailto:charlied.pelle@gmail.com', iconPath: '/icons/discord.svg' },
+    { label: 'LinkedIn profile', href: 'https://linkedin.com', iconPath: '/icons/linkedin.svg' },
   ],
 }

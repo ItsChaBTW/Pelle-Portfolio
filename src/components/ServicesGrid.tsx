@@ -1,20 +1,10 @@
 import type { CSSProperties } from 'react'
 import { MagnetStraight, Timer, Trophy, CheckCircle } from '@/components/slab'
 import type { Icon } from '@/components/slab'
-import Autopilot, { TOOLS } from '@/components/Autopilot'
+import Autopilot from '@/components/Autopilot'
 
 /**
- * ServicesGrid - the Services view on one glass sheet.
- *
- * Three bands, top to bottom: your three-step method (on a dark plate so it
- * is the first thing the eye lands on), the five services as cards that carry
- * the marks of what each one is built with, and the live automation demo
- * scaled into whatever height is left. Same object language as Home and
- * Projects: the glass, the bento card, plated marks, orange for the index
- * and the accent.
- *
- * Every string below is a PLACEHOLDER. Replace it, or hand this file to your
- * AI assistant and tell it what to put in each spot.
+ * ServicesGrid - Charlie Pelle's Services view.
  */
 
 /* ---------- The method ---------- */
@@ -30,42 +20,38 @@ type Stage = {
 const STAGES: Stage[] = [
   {
     index: '01',
-    label: 'Step 1',
-    body: 'PLACEHOLDER - one line on what happens in this step.',
+    label: 'Architecture & Schema',
+    body: 'We map out user flows, relational database schemas, and RESTful API specifications for maximum efficiency.',
     Icon: MagnetStraight,
-    chips: ['Tag 1', 'Tag 2', 'Tag 3', 'Tag 4'],
+    chips: ['Requirements', 'DB Normalization', 'API Contracts', 'Security'],
   },
   {
     index: '02',
-    label: 'Step 2',
-    body: 'PLACEHOLDER - one line on what happens in this step.',
+    label: 'Agile Fullstack Build',
+    body: 'Rapid backend and frontend development with iterative testing, clean code, and regular check-ins.',
     Icon: Timer,
-    chips: ['Tag 1', 'Tag 2', 'Tag 3'],
+    chips: ['PHP / Laravel', 'C# ASP.NET', 'TypeScript', 'Tailwind'],
   },
   {
     index: '03',
-    label: 'Step 3',
-    body: 'PLACEHOLDER - one line on the result the client gets.',
+    label: 'Production Deployment',
+    body: 'Automated deployment, query tuning, security audits, and hands-on maintenance for rock-solid reliability.',
     Icon: Trophy,
-    chips: ['Tag 1', 'Tag 2', 'Tag 3'],
+    chips: ['Query Tuning', 'SSL & Auth', 'Live Testing', 'Monitoring'],
   },
 ]
 
 /* ---------- The services ---------- */
 
-// Example tool marks from /public/icons. Swap for the tools you actually use.
-const GHL = '/icons/gohighlevel.png'
+const DOCKER = '/icons/ai/docker.svg'
 const REACT = '/icons/ai/react.svg'
 const TAILWIND = '/icons/ai/tailwindcss.svg'
 const VITE = '/icons/ai/vite.svg'
 const CLOUDFLARE = '/icons/ai/cloudflare.svg'
-const N8N = '/icons/ai/n8n.svg'
-const OPENAI = '/icons/openai.svg'
-const GWS = '/icons/googleworkspace.svg'
-const SLACK = '/icons/slack.svg'
-const CLAUDE_CODE = '/icons/claude-code-logo.png'
-const EXPO = '/icons/ai/expo.svg'
-const CHROME = '/icons/ai/googlechrome.svg'
+const NODE = '/icons/ai/nodedotjs.svg'
+const POSTGRES = '/icons/ai/postgresql.svg'
+const SQLITE = '/icons/ai/sqlite.svg'
+const GITHUB = '/icons/ai/github.svg'
 
 type Service = {
   index: string
@@ -76,53 +62,50 @@ type Service = {
   bullets: string[]
 }
 
-const BULLETS = ['PLACEHOLDER benefit 1', 'PLACEHOLDER benefit 2', 'PLACEHOLDER benefit 3']
-const SERVICE_DESC = 'PLACEHOLDER - one line on this service.'
-
 const SERVICES: Service[] = [
   {
     index: '01',
-    title: 'Service One',
-    description: SERVICE_DESC,
-    chip: 'PLACEHOLDER',
-    logos: [GHL, REACT, TAILWIND],
-    bullets: BULLETS,
+    title: 'Fullstack Web Applications',
+    description: 'End-to-end custom systems built with modern PHP, Laravel, or ASP.NET with responsive frontends.',
+    chip: 'Core Expertise',
+    logos: [REACT, TAILWIND, VITE],
+    bullets: ['Laravel & ASP.NET solutions', 'Responsive, mobile-first design', 'High-performance execution'],
   },
   {
     index: '02',
-    title: 'Service Two',
-    description: SERVICE_DESC,
-    chip: 'PLACEHOLDER',
-    logos: [GHL, N8N, OPENAI],
-    bullets: BULLETS,
+    title: 'Database Architecture & Tuning',
+    description: 'Relational database schema design, indexing, and advanced query optimization for minimal latency.',
+    chip: 'Performance',
+    logos: [POSTGRES, SQLITE],
+    bullets: ['Normalized schema design', 'Query speed optimization', 'Data migration & integrity'],
   },
   {
     index: '03',
-    title: 'Service Three',
-    description: SERVICE_DESC,
-    chip: 'PLACEHOLDER',
-    logos: [GHL, GWS, SLACK],
-    bullets: BULLETS,
+    title: 'RESTful API & System Integration',
+    description: 'Robust API endpoints with JWT authentication, role-based access control, and third-party sync.',
+    chip: 'Backend & APIs',
+    logos: [NODE, GITHUB],
+    bullets: ['Secure authentication flows', 'Clean OpenAPI specifications', 'Third-party API bridging'],
   },
   {
     index: '04',
-    title: 'Service Four',
-    description: SERVICE_DESC,
-    chip: 'PLACEHOLDER',
-    logos: [REACT, VITE, CLOUDFLARE],
-    bullets: BULLETS,
+    title: 'Institutional & Government Systems',
+    description: 'Specialized enterprise portals for examination, QR attendance, and municipal records management.',
+    chip: 'Public Sector',
+    logos: [DOCKER, CLOUDFLARE],
+    bullets: ['QR attendance engine', 'Automated exam portals', 'Department workflow sync'],
   },
   {
     index: '05',
-    title: 'Service Five',
-    description: SERVICE_DESC,
-    chip: 'PLACEHOLDER',
-    logos: [CLAUDE_CODE, EXPO, CHROME],
-    bullets: BULLETS,
+    title: 'Code Audits & Optimization',
+    description: 'Refactoring legacy codebases, strengthening backend security, and reducing application load times.',
+    chip: 'Optimization',
+    logos: [GITHUB, CLOUDFLARE],
+    bullets: ['30%+ load time reduction', 'Security vulnerability patching', 'Maintainability upgrades'],
   },
 ]
 
-/** The tool marks, stacked horizontally on white tiles (same as Projects). */
+/** The tool marks, stacked horizontally on white tiles */
 function Marks({ logos }: { logos: string[] }) {
   return (
     <span className="bento__logos" aria-hidden="true">
@@ -143,26 +126,25 @@ export default function ServicesGrid() {
       <header className="pgrid__head">
         <span className="pgrid__eyebrow">Services</span>
         <h1 className="pgrid__title" id="services-title">
-          Your services headline, in one short line.
+          Engineering Scalable Solutions
         </h1>
         <p className="pgrid__lede">
-          PLACEHOLDER - tell me what to put here: one line on what you offer.
+          From robust backend architectures to modern, intuitive user interfaces, here is how I help bring your vision to production.
         </p>
       </header>
 
       <div className="home__glass sgrid__glass">
-        {/* One dark plate, the headline on the left, the three stages wired
-            in order on the right with a signal running them. */}
+        {/* The 3-stage method */}
         <div className="sgrid__method" aria-labelledby="method-title">
           <div className="sgrid__method-copy">
-            <span className="sgrid__method-eyebrow">Your Method</span>
+            <span className="sgrid__method-eyebrow">Development Lifecycle</span>
             <h2 className="sgrid__method-title" id="method-title">
-              One. Two. Three.
+              Precision. Velocity.
               <br />
-              <span>Your method, in three steps.</span>
+              <span>Built to last.</span>
             </h2>
             <p className="sgrid__method-sub">
-              PLACEHOLDER - one sentence on why your method works.
+              Every system is engineered with strong foundations, ensuring high availability and seamless maintainability.
             </p>
           </div>
 
@@ -188,60 +170,41 @@ export default function ServicesGrid() {
           </ol>
         </div>
 
-        {/* Five cards, each carrying the marks of what it is built with. */}
+        {/* Five cards */}
         <div className="sgrid__offers">
           <div className="sgrid__offers-head">
-            <h2 className="sgrid__offers-title">Your services, listed.</h2>
-            <p className="sgrid__offers-sub">PLACEHOLDER - one short nudge.</p>
+            <h2 className="sgrid__offers-title">Specialized Services</h2>
+            <p className="sgrid__offers-sub">Tailored engineering for startups, organizations, and institutions.</p>
           </div>
           <ul className="bento sgrid__services" role="list">
             {SERVICES.map((s) => (
               <li key={s.title} className="bento__card sgrid__service">
                 <span className="bento__head">
-                  <span className="sgrid__service-top">
-                    <Marks logos={s.logos} />
-                    <span className="sgrid__service-index" aria-hidden="true">{s.index} / 05</span>
+                  <Marks logos={s.logos} />
+                  <span className="bento__chip" data-status="Live">
+                    {s.chip}
                   </span>
-                  <span className="bento__title">{s.title}</span>
-                  <span className="bento__desc">{s.description}</span>
                 </span>
-                <span className="sgrid__chip" aria-hidden="true">{s.chip}</span>
-                <ul className="sgrid__bullets" role="list">
-                  {s.bullets.map((b) => (
-                    <li key={b} className="sgrid__bullet">
-                      <CheckCircle size={15} weight="duotone" aria-hidden="true" />
-                      <span>{b}</span>
-                    </li>
-                  ))}
-                </ul>
+                <div className="sgrid__service-body">
+                  <h3 className="sgrid__service-title">{s.title}</h3>
+                  <p className="sgrid__service-desc">{s.description}</p>
+                  <ul className="sgrid__bullets" role="list">
+                    {s.bullets.map((b) => (
+                      <li key={b} className="sgrid__bullet">
+                        <CheckCircle size={14} weight="fill" aria-hidden="true" />
+                        <span>{b}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </li>
             ))}
           </ul>
         </div>
 
-        {/* The live workflow. Its caption and the tool chips sit in a header
-            above the window, so the canvas gets the whole glass width. */}
-        <div className="sgrid__flow">
-          <header className="sgrid__flow-head">
-            <div className="sgrid__flow-copy">
-              <span className="sgrid__flow-eyebrow">Live automation</span>
-              <h2 className="sgrid__flow-title">Your automation headline.</h2>
-              <p className="sgrid__flow-sub">
-                PLACEHOLDER - tell me what to put here: one sentence on what this example automation does for a client.
-              </p>
-            </div>
-            <ul className="sgrid__flow-tools" role="list" aria-label="Tools that power this flow">
-              {TOOLS.map(({ Icon: ToolIcon, label }) => (
-                <li key={label} className="sgrid__flow-tool">
-                  <ToolIcon size={14} weight="duotone" aria-hidden="true" />
-                  <span>{label}</span>
-                </li>
-              ))}
-            </ul>
-          </header>
-          <div className="sgrid__flow-main">
-            <Autopilot compact maxScale={1.08} />
-          </div>
+        {/* The Autopilot section */}
+        <div className="sgrid__autopilot">
+          <Autopilot />
         </div>
       </div>
     </section>

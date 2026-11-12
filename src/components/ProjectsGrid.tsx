@@ -44,36 +44,32 @@ const FILTERS: { key: Cat | 'all'; label: string }[] = [
   { key: 'ai', label: 'AI' },
 ]
 
-/** Example tool marks, from public/icons. Swap for what you build with. */
-const GHL = '/icons/gohighlevel.png'
-const CLAUDE_CODE = '/icons/claude-code-logo.png'
-const CODEX = '/icons/ai/codex.svg'
-const HERMES = '/icons/ai/hermes.svg'
-const PLAY = '/icons/ai/googleplay.svg'
-const CHROME = '/icons/ai/googlechrome.svg'
-const EXPO = '/icons/ai/expo.svg'
+const WF_SHOTS = [
+  '/images/projects/bagotizen-card.jpg',
+  '/images/projects/iskolar-bago.jpg',
+  '/images/projects/web-based-ems.png',
+  '/images/projects/itech-clearance.jpg',
+  '/images/projects/byea-tabulation.jpg',
+  '/images/projects/busay-health.jpg',
+  '/images/projects/thynk-preview.png',
+  '/images/projects/bcctap-preview.png',
+]
 
-const WF_SHOTS = ['project-1.jpg', 'project-2.jpg', 'project-3.jpg', 'project-4.jpg'].map(
-  (f) => `/placeholders/${f}`,
-)
-
-const FUNNEL_SHOTS = [gymFunnel[0], bookingFunnel[0], websiteFunnel[0]].filter(Boolean)
+const FUNNEL_SHOTS = [gymFunnel[0], bookingFunnel[0], websiteFunnel[0], gymFunnel[1], websiteFunnel[1]].filter(Boolean)
 const thumbSrc = (f: Funnel) => `/${f.dir ?? 'funnels'}/thumbs/${f.file.replace('.html', '.jpeg')}`
 
 const APP_SHOTS = [
   ...mobileApps.map((a) => a.imageSrc).filter((s): s is string => !!s),
-  '/placeholders/extension-1.jpg',
-  '/placeholders/extension-2.jpg',
+  '/images/projects/bagotizen-card.jpg',
+  '/images/projects/itech-clearance.jpg',
+  '/images/projects/web-based-ems.png',
 ]
 
-const BUILD_DESC = 'PLACEHOLDER - tell me what to put here: two lines on what this project is and the result it got.'
-
-/** The three featured builds: each its own card in the stack, each its own
- *  pop-up. */
+/** The three featured builds */
 const BUILDS: Project[] = [
-  { id: 'ticketing', cat: 'work', index: '03', kicker: 'Placeholder category', title: 'Featured Project One', desc: BUILD_DESC, Icon: () => <Ticket size={20} weight="duotone" />, logos: [GHL], eyebrow: 'Featured build', Section: TicketingPanel, Preview: () => null },
-  { id: 'framework', cat: 'ai', index: '04', kicker: 'Placeholder category', title: 'Featured Project Two', desc: BUILD_DESC, Icon: () => <Robot size={20} weight="duotone" />, logos: [CLAUDE_CODE], eyebrow: 'Featured build', Section: FrameworkPanel, Preview: () => null },
-  { id: 'workflow', cat: 'ai', index: '05', kicker: 'Placeholder category', title: 'Featured Project Three', desc: BUILD_DESC, Icon: () => <FlowArrow size={20} weight="duotone" />, logos: [CLAUDE_CODE, CODEX, HERMES], eyebrow: 'Featured build', Section: WorkflowPanel, Preview: () => null },
+  { id: 'ticketing', cat: 'work', index: '03', kicker: 'Municipal Tech', title: 'Bagotizen Pre-Enrollment', desc: 'Verified pre-enrollment platform for 850+ Iskolar Bago beneficiaries with GCash & QR codes.', Icon: () => <Ticket size={20} weight="duotone" />, logos: ['/icons/ai/tailwindcss.svg'], eyebrow: 'Featured build', Section: TicketingPanel, Preview: () => null },
+  { id: 'framework', cat: 'ai', index: '04', kicker: 'Campus Tech', title: 'ITech Student Clearance', desc: 'Multi-office student clearance tracking across Library, Finance, and Registrar offices.', Icon: () => <Robot size={20} weight="duotone" />, logos: ['/icons/ai/nodedotjs.svg'], eyebrow: 'Featured build', Section: FrameworkPanel, Preview: () => null },
+  { id: 'workflow', cat: 'ai', index: '05', kicker: 'Event Tabulation', title: 'Web Based EMS', desc: 'QR-powered event attendance scanner and live jury scoring tabulation system.', Icon: () => <FlowArrow size={20} weight="duotone" />, logos: ['/icons/ai/docker.svg'], eyebrow: 'Featured build', Section: WorkflowPanel, Preview: () => null },
 ]
 
 const leaves = (n: StackNode): StackNode[] => (n.children?.length ? n.children.flatMap(leaves) : [n])
@@ -99,13 +95,13 @@ function WorkflowsPreview() {
 function PlanPreview() {
   return (
     <div className="bento__media bento__doc" aria-hidden="true">
-      <span className="bento__doc-eyebrow">Placeholder document</span>
-      <span className="bento__doc-title">Your document title here.</span>
+      <span className="bento__doc-eyebrow">Municipal Architecture</span>
+      <span className="bento__doc-title">850+ Beneficiary Verification</span>
       <span className="bento__doc-flow">
-        <i>Step</i>
-        <i>Step</i>
-        <i>Step?</i>
-        <i className="is-on">Result</i>
+        <i>Masterlist</i>
+        <i>GCash Verify</i>
+        <i>QR Issue</i>
+        <i className="is-on">Payout Station</i>
       </span>
       <span className="bento__doc-line" />
       <span className="bento__doc-line bento__doc-line--short" />
@@ -162,11 +158,11 @@ function AppsPreview() {
 }
 
 const PROJECTS: Project[] = [
-  { id: 'workflows', cat: 'work', index: '01', title: 'Project Title', desc: 'PLACEHOLDER - tell me what to put here: what these screens show.', Icon: FlowIcon, logos: [GHL], eyebrow: 'Screenshots', Section: AutomationsPanel, span: 2, Preview: WorkflowsPreview },
-  { id: 'plan', cat: 'work', index: '02', title: 'Sample Document', desc: 'PLACEHOLDER - tell me what to put here: the document this opens.', Icon: PlanIcon, logos: [GHL], eyebrow: 'Sample document', Section: PlanPanel, Preview: PlanPreview },
-  { id: 'funnels', cat: 'sites', index: '06', title: 'Pages and sites', desc: 'PLACEHOLDER - the pages in this reel. Spin the reel.', Icon: GlobeIcon, logos: [GHL], eyebrow: 'Pages and sites', Section: BarrelPanel, Preview: FunnelsPreview },
-  { id: 'ai', cat: 'ai', index: '07', title: 'Your systems title here', desc: 'PLACEHOLDER - tell me what to put here: the systems you run.', Icon: SparkIcon, logos: [CLAUDE_CODE, CODEX, HERMES], eyebrow: 'Your systems', Section: AIWindow, Preview: AIPreview },
-  { id: 'apps', cat: 'apps', index: '08', title: 'Apps and tools', desc: 'PLACEHOLDER - tell me what to put here: the apps and tools you ship.', Icon: DeviceIcon, logos: [PLAY, EXPO, CHROME], eyebrow: 'Your apps', Section: AppsWindow, span: 2, Preview: AppsPreview },
+  { id: 'workflows', cat: 'work', index: '01', title: 'Featured Web Platforms', desc: 'Production web deployments for local government and college administration.', Icon: FlowIcon, logos: ['/icons/ai/tailwindcss.svg'], eyebrow: 'Deployments', Section: AutomationsPanel, span: 2, Preview: WorkflowsPreview },
+  { id: 'plan', cat: 'work', index: '02', title: 'Database Schemas & APIs', desc: 'Relational data models, normalization architectures, and RESTful APIs.', Icon: PlanIcon, logos: ['/icons/ai/postgresql.svg'], eyebrow: 'Architecture', Section: PlanPanel, Preview: PlanPreview },
+  { id: 'funnels', cat: 'sites', index: '06', title: '3D Interactive Carousel', desc: 'Explore live web apps, portals, and municipal deployments in 3D.', Icon: GlobeIcon, logos: ['/icons/ai/react.svg'], eyebrow: 'Showcase', Section: BarrelPanel, Preview: FunnelsPreview },
+  { id: 'ai', cat: 'ai', index: '07', title: 'Fullstack Systems Tree', desc: 'Core backend architectures, services, and operational databases.', Icon: SparkIcon, logos: ['/icons/ai/docker.svg', '/icons/ai/github.svg'], eyebrow: 'Tech Tree', Section: AIWindow, Preview: AIPreview },
+  { id: 'apps', cat: 'apps', index: '08', title: 'Internal Systems & Tools', desc: 'Mobile device monitoring, high school faculty scheduling, and QR engines.', Icon: DeviceIcon, logos: ['/icons/ai/nodedotjs.svg', '/icons/ai/sqlite.svg'], eyebrow: 'Systems', Section: AppsWindow, span: 2, Preview: AppsPreview },
 ]
 
 /** The icon tile, or the real marks stacked horizontally in its place. */
@@ -300,9 +296,9 @@ export default function ProjectsGrid() {
       <header className="pgrid__head">
         <span className="pgrid__eyebrow">Projects</span>
         <h1 className="pgrid__title" id="projects-title">
-          Your projects headline goes right here.
+          Featured Work & Systems
         </h1>
-        <p className="pgrid__lede">PLACEHOLDER - tell me what to put here: one line on the work below. Open a card to see it full size.</p>
+        <p className="pgrid__lede">Fullstack web applications, municipal government portals, and internal tools engineered for reliability. Open a card to explore details.</p>
       </header>
 
       {phone && (

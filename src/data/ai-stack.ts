@@ -1,45 +1,21 @@
-/**
- * The systems tree shown in the Projects "systems" pop-up (and as chips on
- * Home and in the Projects bento card).
- *
- * This file is the ONLY place node copy lives. AIStack.tsx and AIStackGrid.tsx
- * render whatever shape they find here, so swapping in content is a data edit
- * and never a JSX edit. Keep the exported names and types stable.
- *
- * Every value below is a PLACEHOLDER. Shape rules:
- * - The root is you. Its children are the categories (branches).
- * - A branch with `status` is itself a system; a branch without one is a
- *   group whose children are the systems.
- * - Status is what the thing actually does today: "Live" (in use by others),
- *   "Internal" (works, you use it), "Beta".
- * - Logo marks in AIStackGrid.tsx are keyed by the node `id` below.
- */
-
 import {
   Sparkle,
-  Coffee,
-  Robot,
-  Article,
-  FilmSlate,
-  UsersThree,
   Database,
-  SlackLogo,
-  MagnifyingGlass,
-  ChatCircleDots,
-  FlowArrow,
-  PhoneCall,
-  Browser,
-  Broadcast,
-  Timer,
+  Cpu,
+  Browsers,
+  QrCode,
+  ShieldCheck,
+  Terminal,
+  Clock,
+  Stack,
+  Heartbeat,
+  GraduationCap,
 } from '@/components/slab'
 import type { Icon } from '@/components/slab'
 import { profile } from '@/data/profile'
 
 export type StackStatus = 'Live' | 'Internal' | 'Beta'
 
-/** A vendor mark, masked to a single ink colour so the row reads as one set
- *  rather than a rainbow of brand palettes. Only marks that already exist in
- *  public/icons are listed. */
 export type StackLogo = { src: string; name: string }
 
 export type StackNode = {
@@ -56,142 +32,110 @@ export type StackNode = {
   children?: StackNode[]
 }
 
-const ANTHROPIC: StackLogo = { src: '/icons/anthropic.svg', name: 'Anthropic' }
-const OPENAI: StackLogo = { src: '/icons/openai.svg', name: 'OpenAI' }
-const SLACK: StackLogo = { src: '/icons/slack.svg', name: 'Slack' }
-const NOUS: StackLogo = { src: '/icons/nousresearch.svg', name: 'Nous Research' }
+const PHP_STACK = 'PHP 8.x • Laravel • RESTful APIs'
+const ASP_STACK = 'C# ASP.NET Core • Entity Framework • SQL Server'
+const MYSQL_STACK = 'MySQL • Database Normalization • Query Optimization'
+const FRONT_STACK = 'TypeScript / JS • Tailwind CSS • Bootstrap 5'
 
-const WHAT = 'PLACEHOLDER - tell me what to put here: one plain line on what this does.'
-const STACK = 'PLACEHOLDER - model, tools, where it runs'
-
-/** Single root: you. Branches are the categories. */
 export const aiStack: StackNode = {
   id: 'root',
   Icon: Sparkle,
   name: profile.name,
-  what: 'PLACEHOLDER - tell me what to put here: one line on the systems you build and run.',
-  stack: 'PLACEHOLDER - your brand',
+  what: 'Fullstack web systems, resilient backend APIs, and mission-critical database architectures.',
+  stack: FRONT_STACK,
   children: [
     {
-      id: 'project-a',
-      Icon: Coffee,
-      logos: [ANTHROPIC],
-      name: 'Project A',
-      what: WHAT,
-      stack: STACK,
-      status: 'Live',
-    },
-    {
-      id: 'category-one',
-      Icon: Robot,
-      name: 'Category One',
-      what: 'PLACEHOLDER - tell me what to put here: what the systems in this group have in common.',
+      id: 'government-systems',
+      Icon: Terminal,
+      name: 'Municipal & Government Tech',
+      what: 'Live civic platforms engineered for City Government of Bago.',
       children: [
         {
-          id: 'project-b',
-          Icon: Article,
-          logos: [ANTHROPIC],
-          name: 'Project B',
-          what: WHAT,
-          stack: STACK,
-          status: 'Internal',
-        },
-        {
-          id: 'project-c',
-          Icon: FilmSlate,
-          logos: [OPENAI],
-          name: 'Project C',
-          what: WHAT,
-          stack: STACK,
-          status: 'Internal',
-        },
-        {
-          id: 'project-d',
-          Icon: UsersThree,
-          logos: [ANTHROPIC],
-          name: 'Project D',
-          what: WHAT,
-          stack: STACK,
-          status: 'Internal',
-        },
-      ],
-    },
-    {
-      id: 'category-two',
-      Icon: Database,
-      name: 'Category Two',
-      what: 'PLACEHOLDER - tell me what to put here: what the systems in this group have in common.',
-      children: [
-        {
-          id: 'project-e',
-          Icon: SlackLogo,
-          logos: [ANTHROPIC, SLACK],
-          name: 'Project E',
-          what: WHAT,
-          stack: STACK,
+          id: 'bagotizen-card',
+          Icon: QrCode,
+          name: 'Bagotizen Card Pre-Enrollment',
+          what: 'Verified online pre-enrollment with GCash validation and automated QR reference codes for 850+ scholars.',
+          stack: 'PHP • MySQL • GCash Payout Flow • QR Engine',
           status: 'Live',
         },
         {
-          id: 'project-f',
-          Icon: MagnifyingGlass,
-          logos: [ANTHROPIC],
-          name: 'Project F',
-          what: WHAT,
-          stack: STACK,
+          id: 'iskolar-bago',
+          Icon: Browsers,
+          name: 'City of Bago Iskolar Portal',
+          what: 'Official municipal scholarship portal with applicant workflows, status tracking, and assistance.',
+          stack: 'BAGO.GOV • PHP • Relational Database',
+          status: 'Live',
+        },
+        {
+          id: 'thynk-system',
+          Icon: Cpu,
+          name: 'THYNK Disaster Response Network',
+          what: 'Emergency management & resource coordination platform for relief operations.',
+          stack: ASP_STACK,
           status: 'Live',
         },
       ],
     },
     {
-      id: 'category-three',
-      Icon: ChatCircleDots,
-      name: 'Category Three',
-      what: 'PLACEHOLDER - tell me what to put here: what the systems in this group have in common.',
+      id: 'campus-platforms',
+      Icon: GraduationCap,
+      name: 'Higher Ed & Campus Systems',
+      what: 'Digital infrastructure for colleges, student affairs, and academic administration.',
       children: [
         {
-          id: 'project-g',
-          Icon: FlowArrow,
-          logos: [ANTHROPIC],
-          name: 'Project G',
-          what: WHAT,
-          stack: STACK,
+          id: 'itech-clearance',
+          Icon: ShieldCheck,
+          name: 'ITech Student Clearance System',
+          what: 'Multi-office student clearance tracking across Library, Finance, and Registrar with live status indicators.',
+          stack: 'PHP • MySQL • Multi-Department Workflows',
           status: 'Live',
         },
         {
-          id: 'project-h',
-          Icon: PhoneCall,
-          logos: [ANTHROPIC],
-          name: 'Project H',
-          what: WHAT,
-          stack: STACK,
-          status: 'Beta',
+          id: 'event-management',
+          Icon: QrCode,
+          name: 'Web Based Event Management System',
+          what: 'QR-powered student attendance scanning, credentialing, and live event tabulation.',
+          stack: 'itechbsis4c.com • PHP / MySQL • QR Engine',
+          status: 'Live',
         },
         {
-          id: 'project-i',
-          Icon: Browser,
-          logos: [ANTHROPIC],
-          name: 'Project I',
-          what: WHAT,
-          stack: STACK,
+          id: 'bcctap-attendance',
+          Icon: Clock,
+          name: 'BCC Time Attendance Platform',
+          what: 'Campus QR scanning attendance system for faculty and administrative staff.',
+          stack: 'bcctap.bccbsis.com • PHP • Vanilla JS',
+          status: 'Live',
+        },
+        {
+          id: 'edugrant-portal',
+          Icon: Database,
+          name: 'EDUGRANT Examination Portal',
+          what: 'Automated scholarship testing portal with online grading algorithms.',
+          stack: PHP_STACK,
           status: 'Live',
         },
       ],
     },
     {
-      id: 'project-j',
-      Icon: Broadcast,
-      logos: [NOUS],
-      name: 'Project J',
-      what: WHAT,
-      stack: STACK,
-      status: 'Live',
+      id: 'scoring-engines',
+      Icon: Stack,
+      name: 'Tabulation & Community Services',
+      what: 'Specialized tabulation engines and public healthcare portals.',
       children: [
         {
-          id: 'project-k',
-          Icon: Timer,
-          name: 'Project K',
-          what: WHAT,
-          stack: STACK,
+          id: 'byea-tabulation',
+          Icon: ShieldCheck,
+          name: 'BYEA Tabulation System 2026',
+          what: 'Jury scoring and instant awards tabulation platform for Bagonhon Youth for Excellence Awards 2026.',
+          stack: 'PHP • Real-time Scoring • Mathematical Weighing',
+          status: 'Live',
+        },
+        {
+          id: 'busay-health',
+          Icon: Heartbeat,
+          name: 'Busay Health Center Portal',
+          what: 'Online consultation appointments, health services directory, and clinic queue management.',
+          stack: MYSQL_STACK,
           status: 'Live',
         },
       ],

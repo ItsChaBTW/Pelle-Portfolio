@@ -71,32 +71,29 @@ type Client = {
 const CLIENTS: Client[] = [
   {
     index: '01',
-    name: 'Client Name 1',
-    role: 'PLACEHOLDER ROLE',
+    name: 'Bago City Government',
+    role: 'IT Officer (Jan 2026 - Present)',
     daily:
-      'PLACEHOLDER - tell me what to put here: one or two sentences on what you run or build for this client day to day.',
-    work: ['Tag', 'Tag', 'Tag'],
-    logoSrc: '/placeholders/logo.svg',
+      'Engineered IT infrastructure and system support, enhancing digital service capabilities for government offices and improving service efficiency by ~20%. Managed database operations and optimizations.',
+    work: ['Government Tech', 'MySQL Optimization', 'IT Infrastructure'],
     Icon: Gauge,
   },
   {
     index: '02',
-    name: 'Client Name 2',
-    role: 'PLACEHOLDER ROLE',
+    name: 'Ninja Tribe Inc.',
+    role: 'Software Developer (Aug 2025 - Nov 2025)',
     daily:
-      'PLACEHOLDER - tell me what to put here: one or two sentences on what you run or build for this client day to day.',
-    work: ['Tag', 'Tag', 'Tag'],
-    logoSrc: '/placeholders/logo.svg',
+      'Developed and optimized backend components for web-based systems, improving application load times by ~30%. Integrated frontend interfaces with backend APIs.',
+    work: ['Backend Optimization', 'API Integration', 'Fullstack'],
     Icon: Robot,
   },
   {
     index: '03',
-    name: 'Client Name 3',
-    role: 'PLACEHOLDER ROLE',
+    name: 'Coders Tribe',
+    role: 'Web Developer Intern (Feb 2025 - Jul 2025)',
     daily:
-      'PLACEHOLDER - tell me what to put here: one or two sentences on what you run or build for this client day to day.',
-    work: ['Tag', 'Tag', 'Tag'],
-    logoSrc: '/placeholders/logo.svg',
+      'Assisted in developing web applications, strengthening backend functionalities, debugging codebases, and contributing to reliable project delivery sprints.',
+    work: ['PHP Core', 'Debugging & QA', 'Team Sprints'],
     Icon: Code,
   },
 ]
@@ -118,12 +115,12 @@ export default function TestimonialsGrid() {
   return (
     <section className="pgrid tgrid" aria-labelledby="testimonials-title">
       <header className="pgrid__head">
-        <span className="pgrid__eyebrow">Testimonials</span>
+        <span className="pgrid__eyebrow">Experience</span>
         <h1 className="pgrid__title" id="testimonials-title">
-          Your testimonials headline.
+          Proven Engineering & Impact
         </h1>
         <p className="pgrid__lede">
-          PLACEHOLDER - tell me what to put here: one line that introduces the videos and the client list.
+          From municipal government departments to rapid-growth software studios, here is a snapshot of my professional journey and impact.
         </p>
       </header>
 
